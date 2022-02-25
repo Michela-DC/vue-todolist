@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <title>Vue todo list</title>
 </head>
 <body>
@@ -12,18 +13,18 @@
     <div id="app">
 
         <div class="input-wrapper">
-            <input type="text">
-            <input type="button" value="add">
+            <!-- collego l'input al js con newTodo -->
+            <!-- con @keyup.enter="addTodo" dico che quando l'utente schiaccia enter sulla tasstiera allora si aziona la funzione addTodo  -->
+            <input type="text" v-model="newTodo" @keyup.enter="addTodo">
+            <!-- anche quando click sul bottone add faccio partire la funzione affTodo -->
+            <input type="button" value="add" @click="addTodo">
         </div>
 
         <div class="list-wrapper">
             <ul class="todo-list">
-                <li class="todo">
-                    Fare la lavatrice
-                </li>
-                
-                <li class="todo">
-                    Fare la lavatrice
+                <!-- ciclo dentro all'array todoList e ne stampo il contenuto con {{element}}  -->
+                <li class="todo" v-for="(element, i) in todoList">
+                    {{element}}
                 </li>
             </ul>
         </div>
