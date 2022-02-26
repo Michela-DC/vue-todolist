@@ -49,4 +49,8 @@ input[type="text"]{
     border-radius: 10px;
     padding: 10px 15px;
 }
+
+.strikethrough{
+    text-decoration: line-through;
+}
     

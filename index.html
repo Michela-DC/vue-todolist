@@ -23,8 +23,8 @@
         <div class="list-wrapper">
             <ul class="todo-list">
                 <!-- ciclo dentro all'array todoList e ne stampo il contenuto con {{element}}  -->
-                <li class="todo" v-for="(element, i) in todoList">
-                    {{element}}
+                <li class="todo" v-for="(element, i) in todoList" :class="alreadyDone(element.done)">
+                    {{element.text}}
                 </li>
             </ul>
         </div>

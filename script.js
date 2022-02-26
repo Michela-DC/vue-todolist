@@ -1,8 +1,33 @@
+// Rifare l’esercizio della to do list.
+// Questa volta però ogni todo sarà un oggetto, formato da due proprietà:
+// - text, una stringa che indica il testo del todo
+// - done, un booleano (true/false) che indica se il todo è stato fatto oppure no
+
 const app = new Vue ({
     el: '#app',
     data: {
         newTodo:'', 
-        todoList:[],
+        todoList:[
+            {
+                text: 'Fare la lavatrice',
+                done: 'true',
+            },
+
+            {
+                text: 'Fare la spesa',
+                done: 'false',
+            },
+
+            {
+                text: 'Andare a correre',
+                done: 'true',
+            },
+
+            {
+                text: 'Lavare la macchina',
+                done: 'false',
+            },
+        ],
     },
 
     methods: {
@@ -12,9 +37,26 @@ const app = new Vue ({
 
             if(this.newTodo){ //è la stessa cosa di scrivere this.newTodo !== ''
                 console.log('la stringa non è vuota')
-                this.todoList.push(this.newTodo)
+
+                // nell'array di oggetti todoList devo aggiungere un nuovo oggetto che come proprietà ha:
+                // text che è la uova stringa inserita(quindi newTodo) e la proprietà done con false
+                let newObject = {
+                    text: this.newTodo,
+                    done: 'false',
+                }
+
+                this.todoList.push(newObject);
+                console.log(this.todoList);
+
+
             }else{
                 console.log('la stringa è vuota');
+            }
+        },
+
+        alreadyDone: function (element) {
+            if(element === 'true'){
+                return 'strikethrough';
             }
         }
     },
