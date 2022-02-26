@@ -48,9 +48,16 @@ input[type="text"]{
     border: 1px solid darkorange;
     border-radius: 10px;
     padding: 10px 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .strikethrough{
     text-decoration: line-through;
+}
+
+.fa-xmark{
+    text-decoration: none;
 }
     

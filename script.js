@@ -53,11 +53,18 @@ const app = new Vue ({
                 console.log('la stringa è vuota');
             }
         },
-
+        
+        //se done è true, quindi se il to do è già stato fatto, assegno la classe che barra il testo
         alreadyDone: function (element) {
             if(element === 'true'){
                 return 'strikethrough';
             }
+        },
+
+        //se clicco sull'icona x il todo che è in quella posizione viene rimosso
+        removeTodo: function(objectPosition) {
+            console.log(objectPosition),
+            this.todoList.splice(objectPosition, 1);
         }
     },
 })
