@@ -50,6 +50,8 @@ const app = new Vue ({
                 this.todoList.push(newObject);
                 console.log(this.todoList);
 
+                // quando è stata inserita una nuova todo l'input text torna vuoto
+                this.newTodo = '';
 
             }else{
                 console.log('la stringa è vuota');
@@ -85,7 +87,6 @@ const app = new Vue ({
                 return 'isVisible';
             }
         },
-
     },
 
     
