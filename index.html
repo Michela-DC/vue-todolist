@@ -30,21 +30,19 @@
             </div>
 
             <div class="list-wrapper">
-                <ul class="todo-list">
-                    <transition-group name="bounce" tag="ul" class="todo-list">
-                        <!-- ciclo dentro all'array todoList e ne stampo il contenuto con {{element}}  -->
-                        <li  v-if="showTodo" class="todo" v-for="(element, i) in todoList" :key="element.text"> 
-                            <div class="checkText-wrapper" @click="doneOrNot(i)">
-                                <i class="fa-solid fa-check" :class="checked(element.done)"></i>
-                                <div class="text-container" :class="alreadyDone(element.done)">
-                                    {{element.text}}
-                                </div>
+                <transition-group name="bounce" tag="ul" class="todo-list">
+                    <!-- ciclo dentro all'array todoList e ne stampo il contenuto con {{element}}  -->
+                    <li  v-if="showTodo" class="todo" v-for="(element, i) in todoList" :key="element.text"> 
+                        <div class="checkText-wrapper" @click="doneOrNot(i)">
+                            <i class="fa-solid fa-check" :class="checked(element.done)"></i>
+                            <div class="text-container" :class="alreadyDone(element.done)">
+                                {{element.text}}
                             </div>
-    
-                            <i class="fa-solid fa-xmark" @click="removeTodo(i)"></i>
-                        </li>
-                      </transition-group>
-                </ul>
+                        </div>
+
+                        <i class="fa-solid fa-xmark" @click="removeTodo(i)"></i>
+                    </li>
+                  </transition-group>
             </div>
 
         </div>
