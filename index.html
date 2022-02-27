@@ -26,22 +26,24 @@
                 <!-- con @keyup.enter="addTodo" dico che quando l'utente schiaccia enter sulla tasstiera allora si aziona la funzione addTodo  -->
                 <input type="text" v-model="newTodo" @keyup.enter="addTodo">
                 <!-- anche quando click sul bottone add faccio partire la funzione affTodo -->
-                <input type="button" value="add" @click="addTodo">
+                <button @click="addTodo" @click="showTodo = true">add</button>
             </div>
 
             <div class="list-wrapper">
                 <ul class="todo-list">
-                    <!-- ciclo dentro all'array todoList e ne stampo il contenuto con {{element}}  -->
-                    <li class="todo" v-for="(element, i) in todoList">                                               
-                        <div class="checkText-wrapper" @click="doneOrNot(i)">
-                            <i class="fa-solid fa-check" :class="checked(element.done)"></i>
-                            <div class="text-container" :class="alreadyDone(element.done)">
-                                {{element.text}}
+                    <transition-group name="bounce" tag="ul" class="todo-list">
+                        <!-- ciclo dentro all'array todoList e ne stampo il contenuto con {{element}}  -->
+                        <li  v-if="showTodo" class="todo" v-for="(element, i) in todoList" :key="element.text"> 
+                            <div class="checkText-wrapper" @click="doneOrNot(i)">
+                                <i class="fa-solid fa-check" :class="checked(element.done)"></i>
+                                <div class="text-container" :class="alreadyDone(element.done)">
+                                    {{element.text}}
+                                </div>
                             </div>
-                        </div>
-                        
-                        <i class="fa-solid fa-xmark" @click="removeTodo(i)"></i>
-                    </li>
+    
+                            <i class="fa-solid fa-xmark" @click="removeTodo(i)"></i>
+                        </li>
+                      </transition-group>
                 </ul>
             </div>
 

@@ -6,6 +6,7 @@
 const app = new Vue ({
     el: '#app',
     data: {
+        showTodo: true,
         newTodo:'', 
         todoList:[
             {
@@ -86,4 +87,6 @@ const app = new Vue ({
         },
 
     },
+
+    
 })
