@@ -7,34 +7,46 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
     <title>Vue todo list</title>
 </head>
 <body>
+    
+    <header>    
+        <h1>To Do List</h1>
+    </header>
 
-    <div id="app">
+    <main id="app">
+        <div class="main-container">     
+            <div class="input-wrapper">
+                <!-- collego l'input al js con newTodo -->
+                <!-- con @keyup.enter="addTodo" dico che quando l'utente schiaccia enter sulla tasstiera allora si aziona la funzione addTodo  -->
+                <input type="text" v-model="newTodo" @keyup.enter="addTodo">
+                <!-- anche quando click sul bottone add faccio partire la funzione affTodo -->
+                <input type="button" value="add" @click="addTodo">
+            </div>
 
-        <div class="input-wrapper">
-            <!-- collego l'input al js con newTodo -->
-            <!-- con @keyup.enter="addTodo" dico che quando l'utente schiaccia enter sulla tasstiera allora si aziona la funzione addTodo  -->
-            <input type="text" v-model="newTodo" @keyup.enter="addTodo">
-            <!-- anche quando click sul bottone add faccio partire la funzione affTodo -->
-            <input type="button" value="add" @click="addTodo">
-        </div>
-
-        <div class="list-wrapper">
-            <ul class="todo-list">
-                <!-- ciclo dentro all'array todoList e ne stampo il contenuto con {{element}}  -->
-                <li class="todo" v-for="(element, i) in todoList" :class="alreadyDone(element.done)">
-                    {{element.text}}
-                    <div class="icon-wrapper">
+            <div class="list-wrapper">
+                <ul class="todo-list">
+                    <!-- ciclo dentro all'array todoList e ne stampo il contenuto con {{element}}  -->
+                    <li class="todo" v-for="(element, i) in todoList">                                               
+                        <div class="checkText-wrapper" @click="doneOrNot(i)">
+                            <i class="fa-solid fa-check" :class="checked(element.done)"></i>
+                            <div class="text-container" :class="alreadyDone(element.done)">
+                                {{element.text}}
+                            </div>
+                        </div>
+                        
                         <i class="fa-solid fa-xmark" @click="removeTodo(i)"></i>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+
         </div>
-
-    </div>
-
+    </main>
     
     <script src="script.js"></script>
 </body>

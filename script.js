@@ -28,6 +28,7 @@ const app = new Vue ({
                 done: 'false',
             },
         ],
+
     },
 
     methods: {
@@ -39,7 +40,7 @@ const app = new Vue ({
                 console.log('la stringa non è vuota')
 
                 // nell'array di oggetti todoList devo aggiungere un nuovo oggetto che come proprietà ha:
-                // text che è la uova stringa inserita(quindi newTodo) e la proprietà done con false
+                // text che è la nuova stringa inserita(quindi newTodo) e la proprietà done con false
                 let newObject = {
                     text: this.newTodo,
                     done: 'false',
@@ -53,18 +54,36 @@ const app = new Vue ({
                 console.log('la stringa è vuota');
             }
         },
-        
+
+        //se clicco sull'icona x il todo che è in quella posizione viene rimosso
+        removeTodo: function(objectPosition) {
+            console.log(objectPosition),
+            this.todoList.splice(objectPosition, 1);
+        },
+
+        // cliccando sul testo dell’item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa)
+        doneOrNot: function (index) {
+            // quando clicco sul todo devo prendere la properietà done dell'oggetto nella posizione corrispondente
+            if(this.todoList[index].done === 'false'){
+                this.todoList[index].done = 'true';
+
+            } else {
+                this.todoList[index].done = 'false';
+            }
+        },
+
         //se done è true, quindi se il to do è già stato fatto, assegno la classe che barra il testo
         alreadyDone: function (element) {
             if(element === 'true'){
                 return 'strikethrough';
             }
         },
+        //se done è true, quindi se il to do è già stato fatto, la checkbox viene spuntata
+        checked: function (element) {
+            if(element === 'true'){
+                return 'isVisible';
+            }
+        },
 
-        //se clicco sull'icona x il todo che è in quella posizione viene rimosso
-        removeTodo: function(objectPosition) {
-            console.log(objectPosition),
-            this.todoList.splice(objectPosition, 1);
-        }
     },
 })
